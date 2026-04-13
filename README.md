@@ -102,3 +102,5 @@ class StudentModel(BaseModel):
         },
     )
 ```
+
+13/04/2026: Avui he acabat de posar en funcionament la api i he començat amb les comprovacions de les CRUD, ara mateix lo unic que necessito es arreglar alguns inconvenients per a les comprovacions. Un cop tingue aixo, domes em quedara crear el frontend.

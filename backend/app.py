@@ -17,8 +17,8 @@ app = FastAPI(
 
 # --- Configuració de la connexió amb MongoDB ---
 # Es requereix la variable d'entorn MONGODB_URL [cite: 139]
-client = AsyncMongoClient(os.environ.get("MONGODB_URL", "mongodb://localhost:27017"))
-db = client.gestor_llibres
+client = AsyncMongoClient("mongodb+srv://Polete:Polpol_6@cluster0.9mclpso.mongodb.net")
+db = client.Gestor_de_llibres
 llibre_collection = db.get_collection("llibres")
 
 # Tipus per manejar el format de ObjectId de MongoDB [cite: 151]

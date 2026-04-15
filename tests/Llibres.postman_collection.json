@@ -1,0 +1,149 @@
+{
+	"info": {
+		"_postman_id": "555a3b67-c06f-49ff-a49c-e3b92dc5021e",
+		"name": "Llibres",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "53873216",
+		"_collection_link": "https://polcarrillo-9890974.postman.co/workspace/Pol-Carrillo-Bertomeu's-Workspa~4d86171f-377f-480a-81ee-f8ce4768bbab/collection/53873216-555a3b67-c06f-49ff-a49c-e3b92dc5021e?action=share&source=collection_link&creator=53873216"
+	},
+	"item": [
+		{
+			"name": "Get tots",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/llibres/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"llibres",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"titol\": \"El temor de un hombre sabio\",\n\"autor\": \"Patrick Rothfuss\",\n\"estat\": \"llegit\",\n\"valoracio\": 10,\n\"categoria\": \"Fantasia\",\n\"persona\": \"Pol\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/llibres/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"llibres",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get per ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/llibres/69df35403320509de4e1badd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"llibres",
+						"69df35403320509de4e1badd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"_id\": \"69df35403320509de4e1badd\",\n    \"titol\": \"El temor de un hombre sabio\",\n    \"autor\": \"Patrick Rothfuss\",\n    \"estat\": \"pendent\",\n    \"valoracio\": 10,\n    \"categoria\": \"Fantasia\",\n    \"persona\": \"Pol\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/llibres/69df35403320509de4e1badd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"llibres",
+						"69df35403320509de4e1badd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/llibres/69dc93be57f7fed0ef3cf49d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"llibres",
+						"69dc93be57f7fed0ef3cf49d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get per categoria",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/llibres/Fantasia",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"llibres",
+						"Fantasia"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

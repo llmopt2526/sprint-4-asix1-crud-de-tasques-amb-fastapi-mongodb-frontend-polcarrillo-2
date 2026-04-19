@@ -1,10 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/ULL36zWV)
 ### Estructura del projecte
-
-A diferència d’altres projectes més complexos, en aquest cas **treballareu amb una estructura simple**, igual que a l’exemple oficial. Tot el backend s’ubica en un únic fitxer (`app.py`), amb l’objectiu de centrar-se en **aprendre CRUD amb FastAPI i MongoDB** abans de **modularitzar el codi**.
-
-El projecte ha de mantenir una **estructura com aquesta**:
-
 ```
 project/
 ├── README.md
@@ -20,87 +15,47 @@ project/
 └── tests/              # Tests amb Postman
     └── Postman_API_tests.json
 ```
-#### Fitxer `app.py`
+### Tutorial de funcionament ###
 
-En projectes més complexos, es separaria, per exemple, la connexió a MongoDB en un fitxer a banda, anomenat `database.py`; i, els models, en `models.py`.
-En el nostre cas, tot el backend l'implementarem dins del fitxer `app.py` per simplificar.
+Primer en un sistema linux despres de actualitzar el sistema amb la comanda sudo apt install, s'haura de descarregar la seguent aplicacio.
 
-Tot i això, és **molt recomanable**:
-- Afegir **grans comentaris per separar lògica** de connexió, models i endpoints.
-- **Documentar clarament cada secció** per facilitar la lectura i localització d’errors.
+sudo apt install python3-venv
 
-Un bon exemple seria aquest:
-```python
-import os
-from typing import Optional, List
+Un cop tenim la eina per a crear environments descarregada, podrem procedir a crear el enviroment amb la seguent comanda-
 
-from fastapi import FastAPI, Body, HTTPException, status
-from fastapi.responses import Response
-from pydantic import ConfigDict, BaseModel, Field, EmailStr
-from pydantic.functional_validators import BeforeValidator
-from typing_extensions import Annotated
+sudo python3 -m venv .app
 
-from bson import ObjectId
-import asyncio
-from pymongo import AsyncMongoClient
-from pymongo import ReturnDocument
+Ara que tenim el environment creat, haurem de entrar dins del environment amb la seguent comanda.
 
-# ------------------------------------------------------------------------ #
-#                         Inicialització de l'aplicació                    #
-# ------------------------------------------------------------------------ #
-# Creació de la instància FastAPI amb informació bàsica de l'API
-app = FastAPI(
-    title="Student Course API",
-    summary="Exemple d'API REST amb FastAPI i MongoDB per gestionar informació d'estudiants",
-)
+source .app/bin/activate
 
-# ------------------------------------------------------------------------ #
-#                   Configuració de la connexió amb MongoDB               #
-# ------------------------------------------------------------------------ #
-# Creem el client de MongoDB utilitzant la URL de connexió emmagatzemada
-# a les variables d'entorn. Això evita incloure credencials dins del codi.
-client = AsyncMongoClient(os.environ["MONGODB_URL"])
+Un cop dins del environment, haurem de procedir en la descarrega del repositori i primer haurem de descarregar github amb la seguent comanda.
 
-# Selecció de la base de dades i de la col·lecció
-db = client.college
-student_collection = db.get_collection("students")
+sudo apt install git
 
-# Els documents de MongoDB tenen `_id` de tipus ObjectId.
-# Aquí definim PyObjectId com un string serialitzable per JSON,
-# que serà utilitzat als models Pydantic.
-PyObjectId = Annotated[str, BeforeValidator(str)]
+Amb git descarregat podem procedir amb la descarrega del repositori amb la seguent comanda
 
-# ------------------------------------------------------------------------ #
-#                            Definició dels models                        #
-# ------------------------------------------------------------------------ #
-class StudentModel(BaseModel):
-    """
-    Model que representa un estudiant.
-    Conté tots els camps obligatoris i opcional `_id`.
-    """
-    # Clau primària de l'estudiant. 
-    # MongoDB utilitza `_id`, però l'API exposa aquest camp com `id`.
-    id: Optional[PyObjectId] = Field(alias="_id", default=None)
-    
-    # Camps obligatoris de l'estudiant
-    name: str = Field(...)
-    email: EmailStr = Field(...)
-    course: str = Field(...)
-    gpa: float = Field(..., le=4.0)
 
-    # Configuració addicional del model Pydantic
-    model_config = ConfigDict(
-        populate_by_name=True,  # Permet utilitzar alias al serialitzar/deserialitzar
-        arbitrary_types_allowed=True,  # Permet tipus personalitzats com ObjectId
-        json_schema_extra={
-            "example": {
-                "name": "Jane Doe",
-                "email": "jdoe@example.com",
-                "course": "Experiments, Science, and Fashion in Nanophotonics",
-                "gpa": 3.0,
-            }
-        },
-    )
-```
+git clone https://github.com/llmopt2526/sprint-4-asix1-crud-de-tasques-amb-fastapi-mongodb-frontend-polcarrillo-2.git
+
+Un cop dins del repositori haurem de instal·lar les dependencies que podem trobar al arxiu requirements.txt, pero primer haurem de descarregar pip amb la comanda
+
+sudo apt install pip
+
+Ara amb pip instal·lat, per a descarregar els requirements haurem de usar la seguent comanda estant dins de la carpeta on es troba el requirements
+
+pip install -r requirements.txt
+
+Si et dona problemes de permisos usa la seguent comanda
+
+sudo chown -R $USER:$USER ~/.app/
+
+Un cop tenim les dependencies descarregades, podem procedir en la execucio de la app, i per a fer-ho usarem la seguent comanda
+
+sudo chown -R $USER:$USER ~/opt/.app/
+
+I en aixo ja estaria
+
+
 
 13/04/2026: Avui he acabat de posar en funcionament la api i he començat amb les comprovacions de les CRUD, ara mateix lo unic que necessito es arreglar alguns inconvenients per a les comprovacions. Un cop tingue aixo, domes em quedara crear el frontend.

@@ -1,9 +1,69 @@
-<!doctype html>
-<html>
-  <head>
-    <title>This is the title of the webpage!</title>
-  </head>
-  <body>
-    <p>This is an example paragraph. Anything in the <strong>body</strong> tag will appear on the page, just like this <strong>p</strong> tag and its contents.</p>
-  </body>
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestor de Llibres - Sprint 4</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Gestor de Llibres</h2>
+        
+        <div class="row">
+            <form id="book-form">
+                <div class="row">
+                    <div class="six columns">
+                        <label for="titol">Títol</label>
+                        <input class="u-full-width" type="text" id="titol" required>
+                    </div>
+                    <div class="six columns">
+                        <label for="autor">Autor</label>
+                        <input class="u-full-width" type="text" id="autor" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="four columns">
+                        <label for="categoria">Categoria</label>
+                        <input class="u-full-width" type="text" id="categoria" required>
+                    </div>
+                    <div class="four columns">
+                        <label for="persona">Persona Assignada</label>
+                        <input class="u-full-width" type="text" id="persona" required>
+                    </div>
+                    <div class="four columns">
+                        <label for="valoracio">Valoració (0-10)</label>
+                        <input class="u-full-width" type="number" id="valoracio" min="0" max="10" required>
+                    </div>
+                </div>
+                <label for="estat">Estat</label>
+                <select id="estat">
+                    <option value="pendent">Pendent</option>
+                    <option value="llegit">Llegit</option>
+                </select>
+                <button class="button-primary" type="submit">Afegir Llibre</button>
+            </form>
+        </div>
+
+        <hr>
+
+        <h3>La meva Biblioteca</h3>
+        <table class="u-full-width">
+            <thead>
+                <tr>
+                    <th>Títol</th>
+                    <th>Autor</th>
+                    <th>Estat</th>
+                    <th>Valoració</th>
+                    <th>Persona</th>
+                    <th>Accions</th>
+                </tr>
+            </thead>
+            <tbody id="books-list">
+                </tbody>
+        </table>
+    </div>
+
+    <script src="javascript.js"></script>
+</body>
 </html>

@@ -8,11 +8,20 @@ from typing_extensions import Annotated
 from bson import ObjectId
 from pymongo import AsyncMongoClient
 from pymongo import ReturnDocument
+from fastapi.middleware.cors import CORSMiddleware
 
 # --- Inicialització ---
 app = FastAPI(
     title="Gestor de Llibres API",
     summary="API per gestionar una col·lecció de llibres amb FastAPI i MongoDB"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # --- Configuració de la connexió amb MongoDB ---
